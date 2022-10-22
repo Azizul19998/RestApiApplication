@@ -1,9 +1,6 @@
 package com.example.restAPI;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,4 +33,13 @@ public class MyController {
         User u = new User(id,name,country,age);
         users.put(id,u);
     }
+    @PostMapping("/add_user_body")
+    public void addUserBody( @RequestBody User user ) {
+        users.put(user.getId(), user);
+    }
+    @DeleteMapping("/delete_user/{id}")
+    public void deleteUser(@PathVariable("id") int id) {
+        users.remove(id);
+    }
+
 }
