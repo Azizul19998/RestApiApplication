@@ -1,16 +1,20 @@
 package com.example.restAPI;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+@Component
 @RestController
 public class MyController {
     // to keep list of the all the API's-- its like a folder/class
 
     HashMap<Integer,User> users= new HashMap<>();
+
+
 
     @GetMapping("/get_users")
     public List<User> getAllUsers() {
@@ -42,4 +46,17 @@ public class MyController {
         users.remove(id);
     }
 
+    @Autowired
+    User obj;
+    @GetMapping("/myController")
+    public User getUserByAutowired() {
+        return obj;
+    }
+    @PostMapping("/otherController")
+    public void function() {
+        obj.setAge(100);
+        obj.setName("BABU");
+        obj.setCountry("Australia");
+
+    }
 }

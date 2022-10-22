@@ -1,10 +1,18 @@
 package com.example.restAPI;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class User {
     int id;
     String name;
     String country;
     int age;
+
+    public User() {
+        System.out.println("user class default constructor called");
+    }
 
     public User(int id, String name, String country, int age) {
         this.id = id;
@@ -44,4 +52,9 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
+
+//    @Autowired
+//    MyController object;
+//    @Autowired
+//    User userobj;
 }
